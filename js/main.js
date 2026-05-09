@@ -4,6 +4,15 @@ const gameState = {
     scores: JSON.parse(localStorage.getItem('gameScores')) || {}
 };
 
+// Aller à la section des jeux
+function goToGames() {
+    document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+    });
+    document.getElementById('games').classList.add('active');
+    updateNavButtons('games');
+}
+
 // Navigation entre sections
 function showSection(sectionId) {
     // Masquer toutes les sections
@@ -15,15 +24,25 @@ function showSection(sectionId) {
     document.getElementById(sectionId).classList.add('active');
 
     // Mettre à jour les boutons de navigation
-    document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    event.target.classList.add('active');
+    updateNavButtons(sectionId);
 
     // Charger les scores si demandé
     if (sectionId === 'scores') {
         displayScores();
     }
+}
+
+// Mettre à jour les boutons de navigation
+function updateNavButtons(sectionId) {
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Ajouter la classe active au bouton correspondant
+    const buttons = document.querySelectorAll('.nav-btn');
+    if (sectionId === 'home') buttons[0].classList.add('active');
+    if (sectionId === 'games') buttons[1].classList.add('active');
+    if (sectionId === 'scores') buttons[2].classList.add('active');
 }
 
 // Démarrer un jeu
@@ -47,6 +66,11 @@ function startGame(gameName) {
         case 'quiz':
             initQuiz();
             break;
+        case 'joke':
+            initJoke();
+            break;
+        default:
+            console.error('Jeu inconnu:', gameName);
     }
 }
 
@@ -54,6 +78,7 @@ function startGame(gameName) {
 function backToMenu() {
     document.getElementById('game-container').classList.add('hidden');
     document.getElementById('games').classList.add('active');
+    updateNavButtons('games');
 }
 
 // Sauvegarder un score
@@ -100,7 +125,8 @@ function getGameTitle(gameName) {
     const titles = {
         'puzzle': '🧩 Memory Puzzle',
         'platformer': '🚶 Platformer Jump',
-        'quiz': '🧠 Quiz Smart'
+        'quiz': '🧠 Quiz Smart',
+        'joke': '😂 Random Blagues'
     };
     return titles[gameName] || gameName;
 }

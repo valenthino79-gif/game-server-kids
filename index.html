@@ -24,7 +24,7 @@
             <div class="welcome-box">
                 <h2>Bienvenue ! 👋</h2>
                 <p>Découvrez nos jeux amusants et éducatifs !</p>
-                <button class="btn-primary" onclick="showSection('games')">Commencer à jouer</button>
+                <button class="btn-primary" onclick="goToGames()">Commencer à jouer</button>
             </div>
 
             <div class="info-cards">
@@ -59,6 +59,10 @@
                     <span class="game-icon">🧠</span>
                     <span class="game-name">Quiz Smart</span>
                 </button>
+                <button class="game-card" onclick="startGame('joke')">
+                    <span class="game-icon">😂</span>
+                    <span class="game-name">Random Blagues</span>
+                </button>
             </div>
         </section>
 
@@ -79,5 +83,6 @@
     <script src="js/puzzle.js"></script>
     <script src="js/platformer.js"></script>
     <script src="js/quiz.js"></script>
+    <script src="js/joke.js"></script>
 </body>
 </html>
