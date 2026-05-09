@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeux pour Enfants - Game Server Kids</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎮 Jeux pour Enfants</h1>
+            <p class="subtitle">Amusez-vous en apprenant !</p>
+        </header>
+
+        <nav class="navbar">
+            <button class="nav-btn active" onclick="showSection('home')">Accueil</button>
+            <button class="nav-btn" onclick="showSection('games')">Jeux</button>
+            <button class="nav-btn" onclick="showSection('scores')">Scores</button>
+        </nav>
+
+        <!-- Section Accueil -->
+        <section id="home" class="section active">
+            <div class="welcome-box">
+                <h2>Bienvenue ! 👋</h2>
+                <p>Découvrez nos jeux amusants et éducatifs !</p>
+                <button class="btn-primary" onclick="showSection('games')">Commencer à jouer</button>
+            </div>
+
+            <div class="info-cards">
+                <div class="card">
+                    <h3>🧩 Puzzle</h3>
+                    <p>Trouvez les paires d'images identiques</p>
+                </div>
+                <div class="card">
+                    <h3>🚶 Plateforme</h3>
+                    <p>Saute et évite les obstacles</p>
+                </div>
+                <div class="card">
+                    <h3>🧠 Quiz Éducatif</h3>
+                    <p>Apprends en répondant aux questions</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Jeux -->
+        <section id="games" class="section">
+            <h2>Choisissez un jeu</h2>
+            <div class="games-grid">
+                <button class="game-card" onclick="startGame('puzzle')">
+                    <span class="game-icon">🧩</span>
+                    <span class="game-name">Memory Puzzle</span>
+                </button>
+                <button class="game-card" onclick="startGame('platformer')">
+                    <span class="game-icon">🚶</span>
+                    <span class="game-name">Platformer Jump</span>
+                </button>
+                <button class="game-card" onclick="startGame('quiz')">
+                    <span class="game-icon">🧠</span>
+                    <span class="game-name">Quiz Smart</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Section Scores -->
+        <section id="scores" class="section">
+            <h2>Meilleurs Scores</h2>
+            <div id="scores-list" class="scores-container"></div>
+        </section>
+
+        <!-- Conteneur de jeu -->
+        <section id="game-container" class="section hidden">
+            <button class="btn-back" onclick="backToMenu()">← Retour au menu</button>
+            <div id="game-content"></div>
+        </section>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/puzzle.js"></script>
+    <script src="js/platformer.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>
